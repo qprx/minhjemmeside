@@ -1,0 +1,30 @@
+{
+    "title": "FiveM Server Regler",
+    "sections": [
+      {
+        "title": "Generelle Regler",
+        "rules": [
+          "Respektér alle spillere og administratorer.",
+          "Brug ikke exploits, hacking eller scripting.",
+          "Metagaming og Powergaming er ikke tilladt."
+        ]
+      },
+      {
+        "title": "RP Regler",
+        "rules": [
+          "Alle spillere skal følge RP-scenarier til enhver tid.",
+          "Random Deathmatch (RDM) er forbudt.",
+          "Value of Life skal altid overholdes."
+        ]
+      },
+      {
+        "title": "Køretøjs Regler",
+        "rules": [
+          "Kørsel uden for RP er forbudt.",
+          "Ingen unødig brug af sirener eller blinklys.",
+          "Respektér trafikregler i byområder."
+        ]
+      }
+    ]
+  }
+  

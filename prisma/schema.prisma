@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  NORMAL
+  ADMIN
+}
+
+model User {
+  id           String  @id @default(uuid())
+  steamId      String  @unique
+  displayName  String
+  avatar       String
+  createdAt    DateTime @default(now())
+  lastLogin    DateTime @updatedAt
+  role         Role     @default(NORMAL)
+}
+
+
+model ApplicationStatus {
+  id           String  @id @default(uuid())
+  category     Category  @unique
+  isOpen       Boolean   @default(false)
+  updatedAt    DateTime  @updatedAt
+}
+
+enum Category {
+  EMS
+  POLICE
+  WHITELIST
+}
+
+
+enum ApplicationStatus_Whitelist {
+  AFVENTER
+  GODKENDT
+  AFVIST
+}
+
+
+model Application_Whitelist {
+  id                 String   @id @default(uuid())
+  steamId            String   // Steam ID til at linke ansøgning til brugeren
+  name               String
+  age                String
+  discord            String
+  rpExperience       String?
+  characterName      String
+  characterAge       String
+  characterBackground String
+  rpDuration         String
+  otherServers       String?
+  rpInterest         String
+  scenario1          String
+  scenario2          String
+  scenario3          String
+  ruleAdherence      String
+  techSetup          String?
+  serverChoice       String
+  additionalInfo     String?
+  rulesRead          Boolean  @default(false)
+  techRequirements   Boolean  @default(false)
+  createdAt          DateTime @default(now())
+  status             ApplicationStatus_Whitelist @default(AFVENTER)
+}
+
+
+model Police_Application {
+  id                    String  @id @default(uuid())
+  steamId               String  // Steam ID til at linke ansøgning til brugeren
+  name                  String
+  age                   Int
+  discord               String
+  rpExperience          String?
+  characterName         String
+  characterAge          Int
+  characterBackground   String
+  policeMotivation      String
+  goodPoliceQualities   String
+  balanceLawAndFun      String
+  scenario1             String
+  scenario2             String
+  scenario3             String
+  ruleAdherence         String
+  techSetup             String?
+  serverChoice          String
+  additionalInfo        String?
+  rulesRead             Boolean @default(false)
+  techRequirements      Boolean @default(false)
+  createdAt             DateTime @default(now())
+  status                ApplicationStatus_Whitelist @default(AFVENTER)
+}
+
+model ems_application {
+  id                     String   @id @default(uuid())
+  steamId                String   // Steam ID til at linke ansøgning til brugeren
+  name                   String
+  age                    Int
+  discord                String
+  rpExperience           String? // Valgfri, hvis brugeren ikke har tidligere erfaring
+  characterName          String
+  characterAge           Int
+  characterBackground    String
+  emsMotivation          String
+  goodEmsQualities       String
+  ensureFunRP            String
+  scenario1              String
+  scenario2              String
+  scenario3              String
+  ruleAdherence          String
+  techSetup              String? // Valgfri
+  serverChoice           String
+  additionalInfo         String? // Valgfri
+  rulesRead              Boolean  @default(false)
+  techRequirements       Boolean  @default(false)
+  createdAt              DateTime @default(now())
+  status                 ApplicationStatus_Whitelist @default(AFVENTER)
+}
