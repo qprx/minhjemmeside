@@ -5,7 +5,7 @@ Det er vigtigt du laver en .env fil roden af projektet
 Som skal indeholde følgende:
 DOMAIN=http://localhost:3000
 SESSION_SECRET=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-STEAM_API_KEY=Din steam api key her
+STEAM_API_KEY=4D9BE56E04D551F617BD7995C3A9D486
 
 
 
